@@ -1,14 +1,15 @@
 dir1=src/capitulo_1/
 bin=bin/
 obj=obj/
-reciprocal: $(dir1)main.o $(dir1)reciprocal.o
-	g++ $(CFLAGS) -o $(bin)reciprocal $(dir1)main.o $(dir1)reciprocal.o
+
+reciprocal: main.o reciprocal.o
+	g++ $(CFLAGS) -o $(bin)reciprocal $(obj)main.o $(obj)reciprocal.o
 	
 main.o: $(dir1)main.c $(dir1)reciprocal.hpp
-	gcc $(CFLAGS) -c $(dir1)main.c
+	gcc $(CFLAGS) -c -o $(obj)main.o $(dir1)main.c
 
 reciprocal.o: $(dir1)reciprocal.cpp $(dir1)reciprocal.hpp
-	g++ $(CFLAGS) -c $(dir1)reciprocal.cpp
+	g++ $(CFLAGS) -c -o $(obj)reciprocal.o $(dir1)reciprocal.cpp
 	
 clean:
-	rm -f $(dir1)*.o $(bin)reciprocal
+	rm -f $(obj)*.o $(bin)reciprocal
