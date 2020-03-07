@@ -2,6 +2,8 @@ dir1=src/capitulo_1/
 bin=bin/
 obj=obj/
 
+all: carpetas reciprocal
+
 reciprocal: main.o reciprocal.o
 	g++ $(CFLAGS) -o $(bin)reciprocal $(obj)main.o $(obj)reciprocal.o
 	
@@ -13,3 +15,7 @@ reciprocal.o: $(dir1)reciprocal.cpp $(dir1)reciprocal.hpp
 	
 clean:
 	rm -f $(obj)*.o $(bin)reciprocal
+	rmdir bin obj
+
+carpetas:
+	mkdir bin obj
