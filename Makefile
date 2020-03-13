@@ -1,6 +1,6 @@
 cap1=src/capitulo_1/
 bin=bin/
-obj=obj/ 
+obj=obj/
  
 all: carpetas reciprocal
 
@@ -19,7 +19,7 @@ clean:
 	rm -r $(obj) $(bin)
 
 carpetas:
-	mkdir -p $(bin)capitulo_1 $(bin)capitulo_2 $(bin)capitulo_3 $(bin)capitulo_4 $(bin)capitulo_5
+	mkdir -p $(bin)capitulo_1 $(bin)capitulo_2 $(bin)capitulo_3 $(bin)capitulo_4 $(bin)capitulo_5 
 	mkdir -p $(obj)capitulo_1 $(obj)capitulo_2 $(obj)capitulo_3 $(obj)capitulo_4 $(obj)capitulo_5
 
 
