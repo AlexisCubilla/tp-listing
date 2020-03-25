@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include <string.h>
+#include <stdio.h>
+
 /* A handle for a temporary file created with write_temp_file.  In
    this implementation, it's just a file descriptor.  */
 typedef int temp_file_handle;
@@ -48,4 +51,30 @@ char* read_temp_file (temp_file_handle temp_file, size_t* length)
      go away.  */
   close (fd);
   return buffer;
+}
+
+int main()
+{  
+  
+   FILE *fichero;
+
+   char text [200];
+
+   fichero = fopen("texto.txt","r");
+
+   fgets(text,200,fichero);
+      
+   size_t st =strlen(text);
+      
+   int a =write_temp_file(text,st);
+
+   char *temp =read_temp_file(a,&st);
+
+   printf("el archivo temporal es:\n%s",temp);
+   
+   
+   fclose(fichero);
+     
+   return 0;
+
 }

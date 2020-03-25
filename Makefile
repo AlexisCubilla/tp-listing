@@ -23,6 +23,7 @@ reciprocal.o:
 	
 clean:
 	rm -r -f $(obj) $(bin)
+	rm -f libtest.a
 
 carpetas:
 	mkdir -p $(bin)capitulo_1 $(bin)capitulo_2 $(bin)capitulo_3 $(bin)capitulo_4 $(bin)capitulo_5
@@ -32,7 +33,7 @@ carpetas:
 
 cap2= src/capitulo_2/
 
-capitulo2: arglist getopt_long print-env client temp_file
+capitulo2: arglist getopt_long print-env client temp_file test
 
 arglist: arglist.o
 
@@ -66,14 +67,31 @@ client.o:
 
 	gcc $(CFLAGS) -c $(cap2)2.4/client.c -o $(obj)capitulo_2/client.o
 
+test: test.o
 
-#temp_file: temp_file.o
+	ar cr libtest.a $(obj)capitulo_2/test.o 
+	gcc $(CFLAGS) -c $(cap2)2.8/app.c -o $(obj)capitulo_2/app.o
+	gcc -o $(bin)capitulo_2/test $(obj)capitulo_2/app.o -L. -ltest
 
-#	gcc $(CFLAGS) -o $(bin)capitulo_2/temp_file $(obj)capitulo_2/temp_file.o
+test.o:
 
-#temp_file.o: 
+	gcc $(CFLAGS) -c $(cap2)2.7/test.c -o $(obj)capitulo_2/test.o
 
-#	gcc $(CFLAGS) -c $(cap2)2.5/temp_file.c -o $(obj)capitulo_2/temp_file.o 
+temp_file: temp_file.o creartxt
+
+	gcc $(CFLAGS) -o $(bin)capitulo_2/temp_file $(obj)capitulo_2/temp_file.o 
+
+temp_file.o: 
+
+	gcc $(CFLAGS) -c $(cap2)2.5/temp_file.c -o $(obj)capitulo_2/temp_file.o
+
+creartxt:
+
+	cat $(cap2)2.5/texto.txt > $(bin)capitulo_2/texto.txt
+
+	#cat > $(bin)capitulo_2/texto.txt 
 
 
+
+	
 	
