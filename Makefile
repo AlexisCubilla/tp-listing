@@ -33,7 +33,7 @@ carpetas:
 
 cap2= src/capitulo_2/
 
-capitulo2: arglist getopt_long print-env client temp_file test
+capitulo2: arglist getopt_long print-env client temp_file test readfile
 
 arglist: arglist.o
 
@@ -90,6 +90,14 @@ creartxt:
 	cat $(cap2)2.5/texto.txt > $(bin)capitulo_2/texto.txt
 
 	#cat > $(bin)capitulo_2/texto.txt 
+
+readfile: readfile.o
+
+	gcc $(CFLAGS) -o $(bin)capitulo_2/readfile $(obj)capitulo_2/readfile.o
+
+readfile.o:
+
+	gcc $(CFLAGS) -c $(cap2)2.6/readfile.c -o $(obj)capitulo_2/readfile.o
 
 
 
