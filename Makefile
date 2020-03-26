@@ -33,7 +33,7 @@ carpetas:
 
 cap2= src/capitulo_2/
 
-capitulo2: arglist getopt_long print-env client temp_file test readfile
+capitulo2: arglist getopt_long print-env client temp_file test readfile tifftest
 
 arglist: arglist.o
 
@@ -98,6 +98,15 @@ readfile: readfile.o
 readfile.o:
 
 	gcc $(CFLAGS) -c $(cap2)2.6/readfile.c -o $(obj)capitulo_2/readfile.o
+
+tifftest: tifftest.o
+
+	gcc $(CFLAGS) -o $(bin)capitulo_2/tifftest $(obj)capitulo_2/tifftest.o -ltiff
+	#@gcc -o $(C2_B)tifftest_out $(C2_S)2.9/tifftest.c -ltiff
+
+tifftest.o:
+
+	gcc $(CFLAGS) -c $(cap2)2.9/tifftest.c -o $(obj)capitulo_2/tifftest.o
 
 
 
