@@ -110,7 +110,7 @@ tifftest.o:
 
 # capitulo 3
 
-capitulo3: print-pid system fork
+capitulo3: print-pid system fork fork-exec
 
 cap3=src/capitulo_3/
 
@@ -137,6 +137,16 @@ fork: fork.o
 fork.o:
 
 	gcc $(CFLAGS) -c $(cap3)3.3/fork.c -o $(obj)capitulo_3/fork.o
+
+fork-exec: fork-exec.o
+
+	gcc $(CFLAGS) -o $(bin)capitulo_3/fork-exec $(obj)capitulo_3/fork-exec.o
+
+fork-exec.o:
+
+	gcc $(CFLAGS) -c $(cap3)3.4/fork-exec.c -o $(obj)capitulo_3/fork-exec.o
+
+
 
 
 
