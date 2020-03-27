@@ -2,7 +2,7 @@
 bin=bin/
 obj=obj/
  
-all: carpetas capitulo1 capitulo2
+all: carpetas capitulo1 capitulo2 capitulo3
 
 # capitulo 1
 
@@ -107,6 +107,20 @@ tifftest: tifftest.o
 tifftest.o:
 
 	gcc $(CFLAGS) -c $(cap2)2.9/tifftest.c -o $(obj)capitulo_2/tifftest.o
+
+# capitulo 3
+
+capitulo3: print-pid
+
+cap3=src/capitulo_3/
+
+print-pid: print-pid.o
+
+	gcc $(CFLAGS) -o $(bin)capitulo_3/print-pid $(obj)capitulo_3/print-pid.o
+
+print-pid.o:
+
+	gcc $(CFLAGS) -c $(cap3)3.1/print-pid.c -o $(obj)capitulo_3/print-pid.o
 
 
 
