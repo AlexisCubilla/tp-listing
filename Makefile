@@ -110,7 +110,7 @@ tifftest.o:
 
 # capitulo 3
 
-capitulo3: print-pid
+capitulo3: print-pid system fork
 
 cap3=src/capitulo_3/
 
@@ -121,6 +121,23 @@ print-pid: print-pid.o
 print-pid.o:
 
 	gcc $(CFLAGS) -c $(cap3)3.1/print-pid.c -o $(obj)capitulo_3/print-pid.o
+
+system: system.o
+
+	gcc $(CFLAGS) -o $(bin)capitulo_3/system $(obj)capitulo_3/system.o
+
+system.o:
+
+	gcc $(CFLAGS) -c $(cap3)3.2/system.c -o $(obj)capitulo_3/system.o
+
+fork: fork.o
+
+	gcc $(CFLAGS) -o $(bin)capitulo_3/fork $(obj)capitulo_3/fork.o
+
+fork.o:
+
+	gcc $(CFLAGS) -c $(cap3)3.3/fork.c -o $(obj)capitulo_3/fork.o
+
 
 
 
