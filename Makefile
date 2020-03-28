@@ -110,7 +110,7 @@ tifftest.o:
 
 # capitulo 3
 
-capitulo3: print-pid system fork fork-exec sigusr1 zombie
+capitulo3: print-pid system fork fork-exec sigusr1 zombie sigchld
 
 cap3=src/capitulo_3/
 
@@ -161,6 +161,14 @@ zombie: zombie.o
 zombie.o:
 
 	gcc $(CFLAGS) -c $(cap3)3.6/zombie.c -o $(obj)capitulo_3/zombie.o
+
+sigchld: sigchld.o
+
+	gcc $(CFLAGS) -o $(bin)capitulo_3/sigchld $(obj)capitulo_3/sigchld.o
+
+sigchld.o:
+
+	gcc $(CFLAGS) -c $(cap3)3.7/sigchld.c -o $(obj)capitulo_3/sigchld.o
 
 
 
