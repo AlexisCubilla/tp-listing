@@ -186,7 +186,7 @@ shm.o:
 
 test_sem: test_sem.o sem_all_deall.o sem_init.o sem_pv.o
 	
-	gcc $(CFLAGS) -o $(bin)capitulo_5/test_sem $(obj)capitulo_5/test_sem.o $(obj)capitulo_5/sem_all_deall.o $(obj)capitulo_5/sem_init.o $(obj)capitulo_5/sem_pv.o
+	gcc $(CFLAGS) -o $(bin)capitulo_5/test_sem $(obj)capitulo_5/test_sem.o $(obj)capitulo_5/sem_all_deall.o $(obj)capitulo_5/sem_init.o $(obj)capitulo_5/sem_pv.o -pthread
 	
 test_sem.o: 
 	

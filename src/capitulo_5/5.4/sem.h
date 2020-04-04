@@ -19,3 +19,9 @@ int binary_semaphore_initialize (int semid);
 //del codigo sem_pv.c
 int binary_semaphore_wait (int semid);
 int binary_semaphore_post (int semid);
+
+
+//del codigo tes_sem
+
+static void *funcion_hilo1();
+static void *funcion_hilo2();
