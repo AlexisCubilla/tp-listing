@@ -45,16 +45,16 @@ int main ()
         }
         else
         {
-            printf("Soy el padre con id %d del id proceso %d\n", (int)getpid(), (int)idHijo2);
-            kill(idPropio2,SIGCHLD); 
-
+            printf("Soy el padre con id %d del id proceso %d\n", (int)getpid(), (int)idHijo2); 
+            kill(idPropio2,SIGCHLD);
         }
         
     }
     else //la ejecución de la llamada al sistema fork devuelve el identificador al proceso 'padre'
     {
-		printf("Soy el padre original con id %d del id proceso %d\n", (int)getpid(), (int)idHijo);
-        kill(idPropio,SIGCHLD);  
+        printf("Soy el padre original con id %d del id proceso %d\n", (int)getpid(), (int)idHijo);
+        kill(idPropio,SIGCHLD);
+          
     }
 
     return 0;

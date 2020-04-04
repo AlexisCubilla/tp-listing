@@ -2,7 +2,7 @@
 bin=bin/
 obj=obj/
  
-all: carpetas capitulo1 capitulo2 capitulo3
+all: carpetas capitulo1 capitulo2 capitulo3 capitulo5
 
 # capitulo 1
 
@@ -170,10 +170,39 @@ sigchld.o:
 
 	gcc $(CFLAGS) -c $(cap3)3.7/sigchld.c -o $(obj)capitulo_3/sigchld.o
 
+# capitulo 5
 
+capitulo5: shm test_sem
 
+cap5=src/capitulo_5/
 
+shm: shm.o
 
+	gcc $(CFLAGS)-o $(bin)capitulo_5/shm $(obj)capitulo_5/shm.o
+
+shm.o:
+
+	gcc $(CFLAGS) -c $(cap5)5.1/shm.c -o $(obj)capitulo_5/shm.o
+
+test_sem: test_sem.o sem_all_deall.o sem_init.o sem_pv.o
+	
+	gcc $(CFLAGS) -o $(bin)capitulo_5/test_sem $(obj)capitulo_5/test_sem.o $(obj)capitulo_5/sem_all_deall.o $(obj)capitulo_5/sem_init.o $(obj)capitulo_5/sem_pv.o
+	
+test_sem.o: 
+	
+	gcc $(CFLAGS) -c $(cap5)5.4/test_sem.c -o $(obj)capitulo_5/test_sem.o -I $(cap5)5.4/ 
+
+sem_all_deall.o:  
+
+	gcc $(CFLAGS) -c $(cap5)5.2/sem_all_deall.c -o $(obj)capitulo_5/sem_all_deall.o -I $(cap5)5.4/
+
+sem_init.o:  
+
+	gcc $(CFLAGS) -c $(cap5)5.3/sem_init.c -o $(obj)capitulo_5/sem_init.o -I $(cap5)5.4/
+
+sem_pv.o:  
+
+	gcc $(CFLAGS) -c $(cap5)5.4/sem_pv.c -o $(obj)capitulo_5/sem_pv.o -I $(cap5)5.4/
 
 
 	
