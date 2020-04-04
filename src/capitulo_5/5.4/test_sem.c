@@ -6,24 +6,24 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 
-#include <pthread.h>
+#include <pthread.h> //para crear hilos 
 
-#include "sem.h"
+#include "sem.h" // contiene las declaraciones del listing 5.2 5.3 5.4 y tes_sem
 
 int semaforo;
-int contador=0;
+int contador=0; //recurso compartido 
 int main()
 {
-    key_t key=ftok("/bin/ls",1);
-    semaforo=binary_semaphore_allocation (key, IPC_CREAT | 0666);
-    binary_semaphore_initialize(semaforo);
+    key_t key=ftok("/bin/ls",1); //creando la clave
+    semaforo=binary_semaphore_allocation (key, IPC_CREAT | 0666); //asignacion del semaforo
+    binary_semaphore_initialize(semaforo); //inicializacion
     printf("semaforo inicializado\n");
     if(semaforo==-1)
         printf("error al crear el semaforo");
     else 
     {
         pthread_t hilo1, hilo2;
-        pthread_create (&hilo1,NULL,*funcion_hilo1,NULL);
+        pthread_create (&hilo1,NULL,*funcion_hilo1,NULL); //creacion de hilos de suma y resta a un contador
         pthread_create (&hilo2,NULL,*funcion_hilo2,NULL);
 
         pthread_join(hilo1,NULL);

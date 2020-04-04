@@ -172,7 +172,7 @@ sigchld.o:
 
 # capitulo 5
 
-capitulo5: shm test_sem
+capitulo5: shm test_sem mmap-write
 
 cap5=src/capitulo_5/
 
@@ -203,6 +203,19 @@ sem_init.o:
 sem_pv.o:  
 
 	gcc $(CFLAGS) -c $(cap5)5.4/sem_pv.c -o $(obj)capitulo_5/sem_pv.o -I $(cap5)5.4/
+
+mmap-write: mmap-write.o
+
+	gcc $(CFLAGS) -o $(bin)capitulo_5/mmap-write $(obj)capitulo_5/mmap-write.o
+
+mmap-write.o:  
+
+	gcc $(CFLAGS) -c $(cap5)5.5/mmap-write.c -o $(obj)capitulo_5/mmap-write.o
+
+
+
+
+
 
 
 	
